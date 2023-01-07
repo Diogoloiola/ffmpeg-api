@@ -1,6 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
-  it { should validate_presence_of(:base_directory) }
-  it { should validate_presence_of(:current_os) }
+  describe 'OS name' do
+    subject(:project) do
+      Project.create!
+    end
+
+    it 'Visualize path project' do
+      os_service = OsServices::System.new
+      expect(project.base_directory).to eql("/home/#{os_service.fetch_current_user}/Downloads/ffmpeg")
+    end
+
+    it 'Visalize current OS' do
+      os_service = OsServices::System.new
+
+      current_os = if os_service.mac?
+                     'mac'
+                   elsif os_service.linux?
+                     'linux'
+                   end
+      expect(project.current_os).to eql(current_os)
+    end
+  end
 end

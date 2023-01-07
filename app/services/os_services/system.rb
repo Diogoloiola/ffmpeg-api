@@ -1,5 +1,5 @@
 module OsServices
-  class FetchOsSystem
+  class System
     def windows?
       (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
     end
@@ -18,6 +18,10 @@ module OsServices
 
     def jruby?
       RUBY_ENGINE == 'jruby'
+    end
+
+    def fetch_current_user
+      `echo $USER`.chomp
     end
   end
 end
