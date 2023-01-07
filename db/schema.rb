@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_07_142819) do
-  create_table "projects", force: :cascade do |t|
-    t.string "base_directory"
-    t.string "current_os"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema[7.0].define(version: 20_230_107_161_436) do
+  create_table 'projects', force: :cascade do |t|
+    t.string 'base_directory'
+    t.integer 'current_os'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end
