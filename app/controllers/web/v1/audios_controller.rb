@@ -15,7 +15,7 @@ module Web
       private
 
       def audio_params
-        params.require(:audio).permit(:file, :output_file_name, :to_format)
+        params.require(:audio).permit(:file, :output_file_name, :to_format, :quality)
       end
     end
   end
